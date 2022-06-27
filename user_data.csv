@@ -1,6 +1,6 @@
-user_id,身高,體重,臂長,腿長,瞬間爆發力,柔軟度
-1,186cm,66kg,200cm,104cm,400cm,60cm
-2,183cm,72kg,190cm,110cm,390cm,80cm
+user_id,height,weight,arm_L,leg_L,power,flexibility
+1,186,66,200,104,400,60
+2,183,72,190,110,390,80
 ,,,,,,
 ,,,,,,
 ,,,,,,
