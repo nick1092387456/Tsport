@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const config = require('../config/auth.config')
 const db = require('../models')
-const USERS = db.USERS
+const User = db.User
 verifyToken = (req, res, next) => {
   let token = req.headers['x-access-token']
   if (!token) {
@@ -21,7 +21,7 @@ verifyToken = (req, res, next) => {
 }
 
 isAdmin = async (req, res, next) => {
-  const user = await USERS.findByPK(req.userId)
+  const user = await User.findByPk(req.userId)
   const roles = await user.getRoles()
   for (let i = 0; i < roles.length; i++) {
     if (roles[i].name === 'admin') {
@@ -36,7 +36,7 @@ isAdmin = async (req, res, next) => {
 }
 
 isAthlete = async (req, res, next) => {
-  const user = await USERS.findByPK(req.userId)
+  const user = await User.findByPk(req.userId)
   const roles = await user.getRoles()
   for (let i = 0; i < roles.length; i++) {
     if (roles[i].name === 'athlete') {
@@ -50,7 +50,7 @@ isAthlete = async (req, res, next) => {
 }
 
 isAthleteOrAdmin = async (req, res, next) => {
-  const user = await USERS.findByPK(req.userId)
+  const user = await User.findByPk(req.userId)
   const roles = await user.getRoles()
   for (let i = 0; i < roles.length; i++) {
     if (roles[i].name === 'athlete') {

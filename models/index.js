@@ -48,14 +48,13 @@ db.sequelize = sequelize
 db.Sequelize = Sequelize
 
 //temperate seed
-db.user = require('../models/users')(sequelize, Sequelize)
-db.role = require('../models/roles')(sequelize, Sequelize)
-db.role.belongsToMany(db.user, {
+db.User = require('../models/users')(sequelize, Sequelize)
+db.Role = require('../models/roles')(sequelize, Sequelize)
+db.Role.belongsToMany(db.User, {
   through: 'user_roles',
 })
-db.user.belongsToMany(db.role, {
+db.User.belongsToMany(db.Role, {
   through: 'user_roles',
 })
-db.ROLES = ['user', 'admin', 'moderator']
-
+db.ROLES = ['user', 'admin', 'athlete', 'coach']
 module.exports = db

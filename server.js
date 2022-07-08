@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // const db = require('./app/models')
 const db = require('./models')
-const roles = require('./models/roles')
+const Role = db.Role
 db.sequelize
   .sync({ force: true })
   .then(() => {
@@ -23,19 +23,19 @@ db.sequelize
   })
 
 function initial() {
-  roles.create({
+  Role.create({
     id: 1,
     name: 'user',
   })
-  roles.create({
+  Role.create({
     id: 2,
     name: 'athlete',
   })
-  roles.create({
+  Role.create({
     id: 3,
     name: 'admin',
   })
-  roles.create({
+  Role.create({
     id: 4,
     name: 'coach',
   })

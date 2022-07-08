@@ -1,6 +1,5 @@
 const { authJwt } = require('../middleware')
 const controller = require('../controllers/user.controller')
-const { verifyToken } = require('../middleware/authJwt')
 
 module.exports = function (app) {
   app.use(function (req, res, next) {
@@ -11,9 +10,9 @@ module.exports = function (app) {
     next()
   })
   app.get('/api/test/all', controller.allAccess)
-  app.get('/api/test/user', [authJwt, verifyToken], controller.userBoard)
+  app.get('/api/test/user', [authJwt.verifyToken], controller.userBoard)
   app.get(
-    '/api/test/mod',
+    '/api/test/athlete',
     [authJwt.verifyToken, authJwt.isAthlete],
     controller.athleteBoard
   )
