@@ -9,10 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsToMany(models.Roles, {
+      User.belongsToMany(models.role, {
         through: 'user_roles',
-        foreignKey: 'userId',
-        otherKey: 'roleId',
       })
     }
   }
@@ -26,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       // Other model options go here
       sequelize, // We need to pass the connection instance
-      modelName: 'User', // We need to choose the model name
-      tableName: 'Users',
+      modelName: 'user', // We need to choose the model name
+      tableName: 'users',
       underscored: true,
     }
   )
