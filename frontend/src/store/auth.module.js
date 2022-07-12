@@ -10,33 +10,29 @@ export const auth = {
   namespaced: true,
   state: initialState,
   actions: {
-    login({ commit }, user) {
-      return AuthService.login(user).then(
-        (user) => {
-          commit('loginSuccess', user)
-          return Promise.resolve(user)
-        },
-        (error) => {
-          commit('loginFailure')
-          return Promise.reject(error)
-        }
-      )
+    async login({ commit }, user) {
+      try {
+        const res = await AuthService.login(user)
+        commit('loginSuccess', res)
+        return res
+      } catch (error) {
+        commit('loginFailure')
+        return error
+      }
     },
     logout({ commit }) {
       AuthService.logout()
       commit('logout')
     },
-    register({ commit }, user) {
-      return AuthService.register(user).then(
-        (response) => {
-          commit('registerSuccess')
-          return Promise.resolve(response.data)
-        },
-        (error) => {
-          commit('registerFailure')
-          return Promise.reject(error)
-        }
-      )
+    async register({ commit }, user) {
+      const res = await AuthService.register(user)
+      try {
+        commit('registerSuccess')
+        return res.data
+      } catch (error) {
+        commit('registerFailure')
+        return error
+      }
     },
   },
   mutations: {
