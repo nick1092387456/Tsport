@@ -9,7 +9,7 @@ class UserService {
   getUserBoard() {
     return axios.get(API_URL + 'user', { headers: authHeader() })
   }
-  getModeratorBoard() {
+  getAthleteBoard() {
     return axios.get(API_URL + 'mod', { headers: authHeader() })
   }
   getAdminBoard() {
