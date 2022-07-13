@@ -1,6 +1,6 @@
 <template>
   <div class="col-md-12">
-    <div class="card card-cont">
+    <div class="card card-container">
       <img
         id="profile-img"
         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
@@ -10,7 +10,7 @@
       <Form @submit="handleRegister" :validation-schema="schema">
         <div v-if="!successful">
           <div class="form-group">
-            <label for="name" type="text" class="form-control"></label>
+            <label for="name">Username</label>
             <Field name="name" type="text" class="form-control" />
             <ErrorMessage name="name" class="error-feedback" />
           </div>
@@ -30,7 +30,7 @@
                 v-show="loading"
                 class="spinner-border spinner-border-sm"
               ></span>
-              >Sign Up
+              Sign Up
             </button>
           </div>
         </div>
@@ -60,13 +60,13 @@ export default {
     const schema = yup.object().shape({
       name: yup
         .string()
-        .require('Username is required!')
+        .required('Username is required!')
         .min(3, 'Must be at least 3 characters!')
         .max(20, 'Must be maximum 20 characters!'),
       email: yup
         .string()
         .required('Email is required!')
-        .email('Email is invalid')
+        .email('Email is invalid!')
         .max(50, 'Must be maximum 50 characters!'),
       password: yup
         .string()
@@ -113,3 +113,38 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+label {
+  display: block;
+  margin-top: 10px;
+}
+.card-container.card {
+  max-width: 350px !important;
+  padding: 40px 40px;
+}
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.error-feedback {
+  color: red;
+}
+</style>
