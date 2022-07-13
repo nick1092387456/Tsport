@@ -15,18 +15,20 @@ export default {
       content: '',
     }
   },
-  async mounted() {
-    const res = await UserService.getAdminBoard()
-    try {
-      this.content = res.data
-    } catch (error) {
-      this.content =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString()
-    }
+  mounted() {
+    UserService.getAdminBoard().then(
+      (response) => {
+        this.content = response.data
+      },
+      (error) => {
+        this.content =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString()
+      }
+    )
   },
 }
 </script>
