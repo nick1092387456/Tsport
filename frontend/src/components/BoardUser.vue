@@ -15,18 +15,20 @@ export default {
       content: '',
     }
   },
-  async mounted() {
-    const res = await UserService.getUserBoard()
-    try {
-      this.content = res.data
-    } catch (error) {
-      this.content =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString()
-    }
+  mounted() {
+    UserService.getUserBoard().then(
+      (response) => {
+        this.content = response.data
+      },
+      (error) => {
+        this.content =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString()
+      }
+    )
   },
 }
 </script>

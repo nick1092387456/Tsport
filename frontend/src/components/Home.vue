@@ -15,18 +15,20 @@ export default {
       content: '',
     }
   },
-  async mounted() {
-    const res = await UserService.getPublicContent
-    try {
-      this.content = res.data
-    } catch (error) {
-      this.content =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString()
-    }
+  mounted() {
+    UserService.getPublicContent().then(
+      (response) => {
+        this.content = response.data;
+      },
+      (error) => {
+        this.content =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+      }
+    );
   },
 }
 </script>
