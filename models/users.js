@@ -20,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
-      role_verify: DataTypes.BOOLEAN,
     },
     {
       // Other model options go here
