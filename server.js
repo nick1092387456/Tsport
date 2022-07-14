@@ -12,11 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // const db = require('./app/models')
 const db = require('./models')
 const Role = db.Role
+
 db.sequelize
-  .sync({ force: true })
+  .sync()
   .then(() => {
     console.log('Drop and re-sync db.')
-    initial()
+    // initial()
   })
   .catch((err) => {
     console.log('Failed to sync db: ' + err.message)
