@@ -38,6 +38,14 @@ module.exports = {
           created_at: new Date(),
           updated_at: new Date(),
         },
+        {
+          id: 5,
+          name: 'user4',
+          password: bcrypt.hashSync('123456', 8),
+          email: 'user4@example.com',
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
       ],
       {}
     )
@@ -51,36 +59,56 @@ module.exports = {
         updated_at: new Date(),
         user_id: userRows[0].id,
         role_id: 3,
+        role_verify: null,
       },
       {
         created_at: new Date(),
         updated_at: new Date(),
         user_id: userRows[1].id,
         role_id: 1,
+        role_verify: null,
       },
       {
         created_at: new Date(),
         updated_at: new Date(),
         user_id: userRows[1].id,
         role_id: 2,
+        role_verify: true,
       },
       {
         created_at: new Date(),
         updated_at: new Date(),
         user_id: userRows[2].id,
         role_id: 1,
+        role_verify: null,
       },
       {
         created_at: new Date(),
         updated_at: new Date(),
         user_id: userRows[2].id,
         role_id: 4,
+        role_verify: true,
       },
       {
         created_at: new Date(),
         updated_at: new Date(),
         user_id: userRows[3].id,
         role_id: 1,
+        role_verify: null,
+      },
+      {
+        created_at: new Date(),
+        updated_at: new Date(),
+        user_id: userRows[4].id,
+        role_id: 1,
+        role_verify: null,
+      },
+      {
+        created_at: new Date(),
+        updated_at: new Date(),
+        user_id: userRows[4].id,
+        role_id: 2,
+        role_verify: false,
       },
     ])
 
