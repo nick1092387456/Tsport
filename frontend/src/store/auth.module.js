@@ -10,17 +10,15 @@ export const auth = {
   namespaced: true,
   state: initialState,
   actions: {
-    login({ commit }, user) {
-      return AuthService.login(user).then(
-        (user) => {
-          commit('loginSuccess', user)
-          return Promise.resolve(user)
-        },
-        (error) => {
-          commit('loginFailure')
-          return Promise.reject(error)
-        }
-      )
+    async login({ commit }, user) {
+      try {
+        const userData = await AuthService.login(user)
+        commit('loginSuccess', userData)
+        return Promise.resolve(user)
+      } catch (error) {
+        commit('loginFailure')
+        return Promise.reject(error)
+      }
     },
     logout({ commit }) {
       AuthService.logout()
