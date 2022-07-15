@@ -18,10 +18,10 @@ module.exports = {
         type: Sequelize.DATE,
       },
       user_id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
       },
       role_id: {
         allowNull: false,

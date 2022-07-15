@@ -4,7 +4,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.addColumn('user_roles', 'role_verify', {
       type: Sequelize.BOOLEAN,
-      defaultValue: false,
+      defaultValue: null,
       allowNull: true,
     })
   },

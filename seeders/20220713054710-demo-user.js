@@ -1,5 +1,6 @@
 'use strict'
 const bcrypt = require('bcryptjs')
+const { v4: uuidv4 } = require('uuid')
 
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -7,7 +8,7 @@ module.exports = {
       'users',
       [
         {
-          id: 1,
+          id: uuidv4(),
           name: 'admin',
           password: bcrypt.hashSync('123456', 8),
           email: 'admin@example.com',
@@ -15,7 +16,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 2,
+          id: uuidv4(),
           name: 'user1',
           password: bcrypt.hashSync('123456', 8),
           email: 'user1@example.com',
@@ -23,7 +24,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 3,
+          id: uuidv4(),
           name: 'user2',
           password: bcrypt.hashSync('123456', 8),
           email: 'user2@example.com',
@@ -31,7 +32,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 4,
+          id: uuidv4(),
           name: 'user3',
           password: bcrypt.hashSync('123456', 8),
           email: 'user3@example.com',
@@ -39,7 +40,7 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 5,
+          id: uuidv4(),
           name: 'user4',
           password: bcrypt.hashSync('123456', 8),
           email: 'user4@example.com',

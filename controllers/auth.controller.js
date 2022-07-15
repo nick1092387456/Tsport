@@ -4,11 +4,13 @@ const { User, Role } = db
 const Op = db.Sequelize.Op
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const { v4: uuidv4 } = require('uuid')
 
 exports.signup = async (req, res) => {
   //Save User to Database
   try {
     const user = await User.create({
+      id: uuidv4(),
       name: req.body.name,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
